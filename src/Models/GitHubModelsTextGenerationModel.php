@@ -38,7 +38,26 @@ class GitHubModelsTextGenerationModel extends AbstractOpenAiCompatibleTextGenera
 			$params['model'] = $selected_model;
 		}
 
+		// o1, o3, and gpt-5 models require max_completion_tokens instead of max_tokens.
+		if ( isset( $params['max_tokens'] ) && $this->isReasoningModel( $params['model'] ?? '' ) ) {
+			$params['max_completion_tokens'] = $params['max_tokens'];
+			unset( $params['max_tokens'] );
+		}
+
 		return $params;
+	}
+
+	/**
+	 * Returns true if the model requires max_completion_tokens instead of max_tokens.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $model_id The model identifier.
+	 * @return bool
+	 */
+	private function isReasoningModel( string $model_id ): bool {
+		return (bool) preg_match( '/^o\d/i', $model_id )
+			|| str_contains( $model_id, 'gpt-5' );
 	}
 
 	/**

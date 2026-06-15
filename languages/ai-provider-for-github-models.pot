@@ -82,7 +82,3 @@ msgstr ""
 #: src/Settings.php:190
 msgid "AI Client is not available."
 msgstr ""
-
-#: src/Settings.php:195
-msgid "GitHub Models provider is not registered."
-msgstr ""
