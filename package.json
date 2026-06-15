@@ -1,0 +1,34 @@
+{
+	"name": "ai-provider-for-github-models",
+	"version": "1.0.0",
+	"description": "AI Provider for GitHub Models for the WordPress AI Client.",
+	"keywords": [
+		"wordpress",
+		"wordpress-plugin"
+	],
+	"homepage": "https://github.com/ernilambar/ai-provider-for-github-models",
+	"bugs": {
+		"url": "https://github.com/ernilambar/ai-provider-for-github-models/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ernilambar/ai-provider-for-github-models.git"
+	},
+	"license": "GPL-2.0-or-later",
+	"author": "Nilambar Sharma",
+	"type": "module",
+	"main": "ai-provider-for-github-models.php",
+	"scripts": {
+		"predeploy": "rimraf build deploy vendor && pnpm run ready",
+		"deploy": "packtor",
+		"ready": "pnpm run vendor",
+		"vendor": "composer install --no-dev --no-scripts -o",
+		"version": "easy-replace-in-files"
+	},
+	"browserslist": "> 1%, last 2 versions, not dead",
+	"devDependencies": {
+		"easy-replace-in-files": "^2.0.0",
+		"packtor": "^2.0.0",
+		"rimraf": "^6.1.3"
+	}
+}
