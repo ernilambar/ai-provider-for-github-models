@@ -12,7 +12,6 @@ WordPress plugin that registers [GitHub Models](https://github.com/marketplace/m
 
 1. Install and activate the plugin.
 2. Go to **Settings → Connectors** and enter your GitHub Personal Access Token.
-3. Configure the AI Client under **Settings → AI**.
 
 ## Development
 
