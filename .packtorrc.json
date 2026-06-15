@@ -1,0 +1,10 @@
+{
+	"files": [
+		"assets/**/*",
+		"languages/**/*",
+		"src/**/*",
+		"vendor/**/*",
+		"ai-provider-for-github-models.php",
+		"readme.txt"
+	]
+}
