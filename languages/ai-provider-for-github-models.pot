@@ -39,10 +39,50 @@ msgstr ""
 msgid "https://nilambar.net"
 msgstr ""
 
-#: src/Bootstrap.php:48
+#: src/Bootstrap.php:50
 msgid "Settings"
 msgstr ""
 
 #: src/Provider/GitHubModelsProvider.php:80
 msgid "Use GitHub Models as an AI provider."
+msgstr ""
+
+#: src/Settings.php:50
+msgctxt "page title"
+msgid "GitHub Models Settings"
+msgstr ""
+
+#: src/Settings.php:51
+msgctxt "menu title"
+msgid "GitHub Models"
+msgstr ""
+
+#: src/Settings.php:83
+msgid "Default Text Model"
+msgstr ""
+
+#: src/Settings.php:117
+msgid "— Default —"
+msgstr ""
+
+#: src/Settings.php:134
+msgid "Loading models…"
+msgstr ""
+
+#. translators: %s: URL of the Connectors settings page
+#: src/Settings.php:158
+#, php-format
+msgid "To use GitHub Models, add your API key on the <a href=\"%s\">Connectors</a> page."
+msgstr ""
+
+#: src/Settings.php:186
+msgid "Insufficient permissions."
+msgstr ""
+
+#: src/Settings.php:190
+msgid "AI Client is not available."
+msgstr ""
+
+#: src/Settings.php:195
+msgid "GitHub Models provider is not registered."
 msgstr ""

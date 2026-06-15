@@ -31,6 +31,8 @@ class Bootstrap {
 	public function init(): void {
 		add_action( 'init', [ $this, 'register_provider' ], 5 );
 		add_filter( 'plugin_action_links_' . AI_PROVIDER_FOR_GITHUB_MODELS_BASE_FILENAME, [ $this, 'plugin_action_links' ] );
+
+		( new Settings() )->init();
 	}
 
 	/**
