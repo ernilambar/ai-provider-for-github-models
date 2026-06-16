@@ -5,6 +5,7 @@
 		"src/**/*",
 		"vendor/**/*",
 		"ai-provider-for-github-models.php",
+		"composer.json",
 		"readme.txt"
 	]
 }
