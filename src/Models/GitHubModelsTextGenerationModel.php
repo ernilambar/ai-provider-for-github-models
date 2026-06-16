@@ -12,8 +12,11 @@ namespace Nilambar\AiProviderForGithubModels\Models;
 use Nilambar\AiProviderForGithubModels\Provider\GitHubModelsProvider;
 use Nilambar\AiProviderForGithubModels\Settings;
 use WordPress\AiClient\Providers\Http\DTO\Request;
+use WordPress\AiClient\Providers\Http\DTO\Response;
 use WordPress\AiClient\Providers\Http\Enums\HttpMethodEnum;
+use WordPress\AiClient\Providers\Models\DTO\ModelMetadata;
 use WordPress\AiClient\Providers\OpenAiCompatibleImplementation\AbstractOpenAiCompatibleTextGenerationModel;
+use WordPress\AiClient\Results\DTO\GenerativeAiResult;
 
 /**
  * Text generation model.
@@ -21,6 +24,13 @@ use WordPress\AiClient\Providers\OpenAiCompatibleImplementation\AbstractOpenAiCo
  * @since 1.0.0
  */
 class GitHubModelsTextGenerationModel extends AbstractOpenAiCompatibleTextGenerationModel {
+
+	/**
+	 * The effective model ID when a settings override is active, null otherwise.
+	 *
+	 * @var string|null
+	 */
+	private ?string $effectiveModelId = null;
 
 	/**
 	 * {@inheritDoc}
@@ -35,7 +45,8 @@ class GitHubModelsTextGenerationModel extends AbstractOpenAiCompatibleTextGenera
 
 		$selected_model = get_option( Settings::OPTION_NAME, '' );
 		if ( '' !== $selected_model ) {
-			$params['model'] = $selected_model;
+			$params['model']        = $selected_model;
+			$this->effectiveModelId = $selected_model;
 		}
 
 		// o1, o3, and gpt-5 models require max_completion_tokens instead of max_tokens.
@@ -45,6 +56,39 @@ class GitHubModelsTextGenerationModel extends AbstractOpenAiCompatibleTextGenera
 		}
 
 		return $params;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param Response $response The HTTP response.
+	 * @return GenerativeAiResult
+	 */
+	protected function parseResponseToGenerativeAiResult( Response $response ): GenerativeAiResult {
+		$result = parent::parseResponseToGenerativeAiResult( $response );
+
+		if ( null === $this->effectiveModelId ) {
+			return $result;
+		}
+
+		$original = $this->metadata();
+		$metadata = new ModelMetadata(
+			$this->effectiveModelId,
+			$this->effectiveModelId,
+			$original->getSupportedCapabilities(),
+			$original->getSupportedOptions()
+		);
+
+		return new GenerativeAiResult(
+			$result->getId(),
+			$result->getCandidates(),
+			$result->getTokenUsage(),
+			$result->getProviderMetadata(),
+			$metadata,
+			$result->getAdditionalData()
+		);
 	}
 
 	/**
