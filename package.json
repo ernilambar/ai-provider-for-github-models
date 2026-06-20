@@ -1,6 +1,6 @@
 {
 	"name": "ai-provider-for-github-models",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "AI Provider for GitHub Models for the WordPress AI Client.",
 	"keywords": [
 		"wordpress",

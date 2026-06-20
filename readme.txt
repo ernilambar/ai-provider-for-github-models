@@ -4,7 +4,7 @@ Contributors: nilambar
 Tags: ai, github, github models, ai client, connector
 Requires at least: 7.0
 Tested up to: 7.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 7.4
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -56,6 +56,9 @@ Visit [GitHub Settings → Personal access tokens](https://github.com/settings/t
 All models listed at [github.com/marketplace/models](https://github.com/marketplace/models) are supported for text generation.
 
 == Changelog ==
+
+= 1.0.1 - 20 Jun 2026 =
+* Fix plugin settings overriding caller's explicit model selection unconditionally
 
 = 1.0.0 - 15 Jun 2026 =
 * Initial release
