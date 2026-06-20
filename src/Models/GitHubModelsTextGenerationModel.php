@@ -44,7 +44,7 @@ class GitHubModelsTextGenerationModel extends AbstractOpenAiCompatibleTextGenera
 		$params = parent::prepareGenerateTextParams( $prompt );
 
 		$selected_model = get_option( Settings::OPTION_NAME, '' );
-		if ( '' !== $selected_model ) {
+		if ( '' !== $selected_model && empty( $params['model'] ) ) {
 			$params['model']        = $selected_model;
 			$this->effectiveModelId = $selected_model;
 		}

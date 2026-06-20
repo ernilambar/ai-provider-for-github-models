@@ -5,7 +5,7 @@
  * Description:       AI Provider for GitHub Models for the WordPress AI Client.
  * Requires at least: 7.0
  * Requires PHP:      7.4
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author:            Nilambar Sharma
  * Author URI:        https://nilambar.net
  * License:           GPL-2.0-or-later
@@ -24,7 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'AI_PROVIDER_FOR_GITHUB_MODELS_VERSION', '1.0.0' );
+define( 'AI_PROVIDER_FOR_GITHUB_MODELS_VERSION', '1.0.1' );
 define( 'AI_PROVIDER_FOR_GITHUB_MODELS_BASE_NAME', basename( __DIR__ ) );
 define( 'AI_PROVIDER_FOR_GITHUB_MODELS_BASE_FILEPATH', __FILE__ );
 define( 'AI_PROVIDER_FOR_GITHUB_MODELS_BASE_FILENAME', plugin_basename( __FILE__ ) );
